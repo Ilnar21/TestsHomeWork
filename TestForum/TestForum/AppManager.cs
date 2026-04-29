@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -13,7 +14,9 @@ namespace SeleniumTests
         private LoginHelper auth;
         private PostHelper post;
 
-        public AppManager()
+        private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
+
+        private AppManager()
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -23,6 +26,29 @@ namespace SeleniumTests
             navigation = new NavigationHelper(this, baseURL);
             auth = new LoginHelper(this);
             post = new PostHelper(this);
+        }
+
+        ~AppManager()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+        }
+
+        public static AppManager GetInstance()
+        {
+            if (!app.IsValueCreated)
+            {
+                AppManager newInstance = new AppManager();
+                newInstance.Navigation.OpenLoginPage();
+                app.Value = newInstance;
+            }
+            return app.Value;
         }
 
         public IWebDriver Driver
@@ -43,11 +69,6 @@ namespace SeleniumTests
         public PostHelper Post
         {
             get { return post; }
-        }
-
-        public void Stop()
-        {
-            driver.Quit();
         }
     }
 }

@@ -11,6 +11,11 @@ namespace SeleniumTests
 
         public void Login(AccountData user)
         {
+            if (IsLoggedIn())
+            {
+                return;
+            }
+
             wait.Until(d => d.FindElement(By.Id("username"))).Click();
             driver.FindElement(By.Id("username")).Clear();
             driver.FindElement(By.Id("username")).SendKeys(user.Username);
@@ -20,7 +25,13 @@ namespace SeleniumTests
             driver.FindElement(By.Id("password")).SendKeys(user.Password);
 
             driver.FindElement(By.Name("login")).Click();
+
             wait.Until(d => d.Url.Contains("forum.awd.ru") && !d.Url.Contains("mode=login"));
+        }
+
+        private bool IsLoggedIn()
+        {
+            return IsElementPresent(By.CssSelector("a[href*='mode=logout']"));
         }
     }
 }

@@ -288,3 +288,4 @@ D:\TestsHomeWork\TestForum\TestForum\obj\Debug\TestForum.csproj.CoreCompileInput
 D:\TestsHomeWork\TestForum\TestForum\obj\Debug\TestForum.csproj.Up2Date
 D:\TestsHomeWork\TestForum\TestForum\obj\Debug\TestForum.dll
 D:\TestsHomeWork\TestForum\TestForum\obj\Debug\TestForum.pdb
+D:\TestsHomeWork\TestForum\TestForum\bin\Debug\posts.xml

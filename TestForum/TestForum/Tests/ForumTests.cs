@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using NUnit.Framework;
 
 namespace SeleniumTests
@@ -5,7 +8,13 @@ namespace SeleniumTests
     [TestFixture]
     public class ForumTests : TestBase
     {
-        private AccountData user = new AccountData("", "");
+        private AccountData user = new AccountData("rayan", "");
+
+        public static IEnumerable<PostData> PostDataFromXmlFile()
+        {
+            return (List<PostData>) new XmlSerializer(typeof(List<PostData>))
+                .Deserialize(new StreamReader(@"posts.xml"));
+        }
 
         [Test]
         public void LoginTest()
@@ -16,11 +25,9 @@ namespace SeleniumTests
             Assert.IsTrue(app.Post.IsLoggedIn(), "Authorization failed");
         }
 
-        [Test]
-        public void CreatePostTest()
+        [Test, TestCaseSource("PostDataFromXmlFile")]
+        public void CreatePostTest(PostData post)
         {
-            PostData post = new PostData("Спасибо, хорошо, а передвижения между странами Шенгена нужно предоставлять при подаче документов на визу, верно?");
-
             app.Navigation.OpenLoginPage();
             app.Auth.Login(user);
             app.Navigation.OpenReplyPage();

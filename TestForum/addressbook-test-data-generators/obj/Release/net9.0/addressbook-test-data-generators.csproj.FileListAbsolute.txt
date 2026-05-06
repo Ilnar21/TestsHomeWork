@@ -1,0 +1,15 @@
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\bin\Release\net9.0\addressbook-test-data-generators.exe
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\bin\Release\net9.0\addressbook-test-data-generators.deps.json
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\bin\Release\net9.0\addressbook-test-data-generators.runtimeconfig.json
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\bin\Release\net9.0\addressbook-test-data-generators.dll
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\bin\Release\net9.0\addressbook-test-data-generators.pdb
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.GeneratedMSBuildEditorConfig.editorconfig
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.AssemblyInfoInputs.cache
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.AssemblyInfo.cs
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.csproj.CoreCompileInputs.cache
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.sourcelink.json
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.dll
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\refint\addressbook-test-data-generators.dll
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.pdb
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\addressbook-test-data-generators.genruntimeconfig.cache
+D:\TestsHomeWork\TestForum\addressbook-test-data-generators\obj\Release\net9.0\ref\addressbook-test-data-generators.dll

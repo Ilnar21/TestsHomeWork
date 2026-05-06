@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "addressbook-test-data-generators/1.0.0": {
+        "runtime": {
+          "addressbook-test-data-generators.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "addressbook-test-data-generators/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

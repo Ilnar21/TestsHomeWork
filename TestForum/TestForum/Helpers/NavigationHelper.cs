@@ -12,6 +12,11 @@ namespace SeleniumTests
             this.baseURL = baseURL;
         }
 
+        public void OpenHomePage()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+        }
+
         public void OpenLoginPage()
         {
             driver.Navigate().GoToUrl(baseURL + "ucp.php?mode=login");
@@ -20,7 +25,7 @@ namespace SeleniumTests
 
         public void OpenReplyPage()
         {
-            driver.Navigate().GoToUrl(baseURL + "posting.php?mode=reply&f=561&t=410500");
+            driver.Navigate().GoToUrl(baseURL + "posting.php?mode=reply&f=1101&t=435762");
             wait.Until(d => d.FindElement(By.Id("message")).Displayed);
         }
 

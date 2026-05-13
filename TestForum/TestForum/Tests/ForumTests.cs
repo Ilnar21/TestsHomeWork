@@ -6,30 +6,17 @@ using NUnit.Framework;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class ForumTests : TestBase
+    public class ForumTests : AuthBase
     {
-        private AccountData user = new AccountData("rayan", "");
-
         public static IEnumerable<PostData> PostDataFromXmlFile()
         {
             return (List<PostData>) new XmlSerializer(typeof(List<PostData>))
                 .Deserialize(new StreamReader(@"posts.xml"));
         }
 
-        [Test]
-        public void LoginTest()
-        {
-            app.Navigation.OpenLoginPage();
-            app.Auth.Login(user);
-
-            Assert.IsTrue(app.Post.IsLoggedIn(), "Authorization failed");
-        }
-
         [Test, TestCaseSource("PostDataFromXmlFile")]
         public void CreatePostTest(PostData post)
         {
-            app.Navigation.OpenLoginPage();
-            app.Auth.Login(user);
             app.Navigation.OpenReplyPage();
             app.Post.CreatePost(post);
 
@@ -43,8 +30,6 @@ namespace SeleniumTests
             string postId = "12339875";
             PostData editedPost = new PostData("Спасибо большое, а передвижения между странами Шенгена нужно предоставлять при подаче документов на визу, верно?");
 
-            app.Navigation.OpenLoginPage();
-            app.Auth.Login(user);
             app.Navigation.OpenEditPage(postId);
             app.Post.EditPost(editedPost);
 

@@ -10,6 +10,7 @@ namespace SeleniumTests
         public void SetupTest()
         {
             app = AppManager.GetInstance();
+            app.Navigation.OpenHomePage();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SeleniumTests
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
-            baseURL = "https://forum.awd.ru/";
+            baseURL = Settings.BaseURL;
 
             navigation = new NavigationHelper(this, baseURL);
             auth = new LoginHelper(this);
@@ -44,9 +44,7 @@ namespace SeleniumTests
         {
             if (!app.IsValueCreated)
             {
-                AppManager newInstance = new AppManager();
-                newInstance.Navigation.OpenLoginPage();
-                app.Value = newInstance;
+                app.Value = new AppManager();
             }
             return app.Value;
         }

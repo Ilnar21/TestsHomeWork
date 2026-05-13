@@ -1,3 +1,4 @@
+using System;
 using OpenQA.Selenium;
 
 namespace SeleniumTests
@@ -13,8 +14,14 @@ namespace SeleniumTests
         {
             if (IsLoggedIn())
             {
-                return;
+                if (IsLoggedIn(user.Username))
+                {
+                    return;
+                }
+                Logout();
             }
+
+            manager.Navigation.OpenLoginPage();
 
             wait.Until(d => d.FindElement(By.Id("username"))).Click();
             driver.FindElement(By.Id("username")).Clear();
@@ -26,12 +33,49 @@ namespace SeleniumTests
 
             driver.FindElement(By.Name("login")).Click();
 
-            wait.Until(d => d.Url.Contains("forum.awd.ru") && !d.Url.Contains("mode=login"));
+            wait.Until(d => IsLoggedIn() || IsLoginErrorPresent());
         }
 
-        private bool IsLoggedIn()
+        public void Logout()
+        {
+            if (!IsLoggedIn())
+            {
+                return;
+            }
+
+            driver.FindElement(By.CssSelector("a[href*='mode=logout']")).Click();
+            wait.Until(d => IsElementPresent(By.Id("username")) || !IsLoggedIn());
+        }
+
+        public bool IsLoggedIn()
         {
             return IsElementPresent(By.CssSelector("a[href*='mode=logout']"));
+        }
+
+        public bool IsLoggedIn(string username)
+        {
+            if (!IsLoggedIn())
+            {
+                return false;
+            }
+
+            foreach (IWebElement element in driver.FindElements(By.CssSelector("a[href*='memberlist.php']")))
+            {
+                if (element.Text.Trim().Equals(username, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsLoginErrorPresent()
+        {
+            return IsElementPresent(By.CssSelector(".error"))
+                || IsElementPresent(By.CssSelector(".errorbox"))
+                || driver.PageSource.Contains("incorrect")
+                || driver.PageSource.Contains("Invalid");
         }
     }
 }

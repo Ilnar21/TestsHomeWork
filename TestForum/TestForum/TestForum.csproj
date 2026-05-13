@@ -129,7 +129,10 @@
   <ItemGroup>
     <Compile Include="Model\AccountData.cs" />
     <Compile Include="AppManager.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Tests\AuthBase.cs" />
     <Compile Include="Tests\ForumTests.cs" />
+    <Compile Include="Tests\LoginTests.cs" />
     <Compile Include="Helpers\HelperBase.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
@@ -141,6 +144,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tests\posts.xml">
       <Link>posts.xml</Link>
       <TargetPath>posts.xml</TargetPath>
